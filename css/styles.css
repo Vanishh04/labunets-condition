@@ -89,6 +89,11 @@ h1 {
 h2 {
   font-size: clamp(32px, 5vw, 52px);
   max-width: 18ch;
+  text-transform: none;
+}
+
+h2::first-letter {
+  text-transform: uppercase;
 }
 
 section[id] {
@@ -261,11 +266,11 @@ h3 {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted-light);
+  color: var(--white);
 }
 
 .hero .lead {
-  color: var(--muted-light);
+  color: var(--white);
 }
 
 .hero h1 {
@@ -334,7 +339,6 @@ h3 {
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--navy);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 55%, transparent);
 }
 
 .hero-photo img {
@@ -375,7 +379,7 @@ h3 {
 
 .section--dark .lead,
 .section--dark .muted {
-  color: var(--muted-light);
+  color: var(--white);
 }
 
 .section--dark .quality {
@@ -517,9 +521,13 @@ h3 {
 
 .price-list strong {
   flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
   color: var(--gold);
   font-family: Commissioner, system-ui, sans-serif;
   font-size: 18px;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .private-benefit {
@@ -627,10 +635,11 @@ h3 {
 .positioning p:last-child {
   max-width: 74ch;
   margin: 0;
-  color: var(--muted-light);
+  color: var(--white);
 }
 
 .card {
+  min-width: 0;
   padding: 28px;
   border: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
   border-radius: var(--radius);
@@ -648,7 +657,11 @@ h3 {
 
 .section--dark .card p,
 .section--dark .media-meta {
-  color: var(--muted-light);
+  color: var(--white);
+}
+
+.section--dark .schedule-cards .card > p {
+  color: var(--white);
 }
 
 .media-grid {
@@ -859,7 +872,8 @@ h3 {
   scroll-snap-align: start;
 }
 
-.video-slide video {
+.video-slide video,
+.video-slide iframe {
   width: 100%;
   aspect-ratio: 9 / 16;
   border: 0;
@@ -911,7 +925,7 @@ h3 {
 .fineprint {
   margin-top: 28px;
   font-size: 13px;
-  color: var(--muted-light);
+  color: var(--white);
 }
 
 .to-top {
@@ -980,6 +994,23 @@ h3 {
   .schedule--bundle,
   .diagnostic-grid {
     grid-template-columns: 1fr;
+  }
+
+  .private-cards .price-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .private-cards .price-list li > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .private-cards .price-list strong {
+    flex: 1 1 auto;
+    width: 100%;
+    line-height: 1.35;
   }
 
   .menu-toggle {
